@@ -11,76 +11,133 @@
     <meta property="og:url" content="https://ya2go.tech/">
     <link rel="canonical" href="https://ya2go.tech/">
     <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="landing.css">
 </head>
 <body>
 
-<header class="top">
+<header class="hero" id="top">
     <div class="wrap">
-        <a class="brand" href="./"><img src="logo.png" alt="">ya2go</a>
-        <nav aria-label="Разделы">
-            <a href="#why">Почему не архивом</a>
-            <a href="#install">Как установить</a>
-            <a href="#faq">Вопросы</a>
+        <nav class="nav" aria-label="Разделы">
+            <a class="brand" href="./"><img src="logo.png" alt="">ya2go</a>
+            <div class="links">
+                <a href="#why">Почему не архивом</a>
+                <a href="#install">Установка</a>
+                <a href="#faq">Вопросы</a>
+            </div>
+            <a class="btn solid-light sm" data-download data-download-top href="#install">Скачать <span class="arr" aria-hidden="true">→</span></a>
         </nav>
-        <a class="btn small" href="#get" data-download>Скачать</a>
+    </div>
+
+    <div class="hero-body">
+        <div class="wrap">
+            <p class="label">Облачный кочевник</p>
+            <h1>Заберите фото с&nbsp;Яндекс.Диска, пока они там есть</h1>
+            <p class="sub">ya2go перевозит всё в Google Drive по одному файлу. Если Яндекс не отдаёт какой-то файл, перенос не обрывается: вы увидите такие файлы списком в конце.</p>
+            <div class="get">
+                <div class="cta">
+                    <a class="btn solid-light" data-download href="https://ya2go.tech/download/ya2go-mac.zip"><span data-download-label>Скачать бесплатно</span> <span class="arr" aria-hidden="true">→</span></a>
+                    <a class="btn line-light" href="#route">Как это работает <span class="arr" aria-hidden="true">↓</span></a>
+                </div>
+                <p class="alt-os"><a data-download-alt href="#install">Есть версия для Mac и для Windows</a></p>
+            </div>
+            <div class="mobile-note" data-mobile-note>
+                <p>ya2go работает на компьютере. Откройте эту страницу на Mac или Windows, там будет кнопка скачивания.</p>
+                <button class="btn solid-light sm" type="button" data-copy-link>Скопировать ссылку</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <div class="wrap">
+            <span class="label">macOS 13+ · Windows 10 и 11 · бесплатно</span>
+            <span class="label">Файлы не проходят через нас</span>
+        </div>
     </div>
 </header>
 
 <main>
-    <div class="hero" id="get">
+    <section class="why grid-bg" id="why">
         <div class="wrap">
-            <h1>Заберите фото с Яндекс.Диска, пока они там есть</h1>
-            <p class="lead">ya2go перевозит всё в Google Drive по одному файлу. Если Яндекс не отдаёт какой-то файл, перенос не обрывается: вы увидите такие файлы списком в конце.</p>
-            <div class="get">
-                <a class="btn big" data-download href="https://ya2go.tech/download/ya2go-mac.zip">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
-                    <span data-download-label>Скачать бесплатно</span>
-                </a>
-                <a class="alt" data-download-alt href="#install">Есть версия для Mac и для Windows</a>
-                <p class="note">macOS 13 и новее · Windows 10 и 11 · бесплатно</p>
+            <div class="why-head">
+                <div>
+                    <p class="label">Почему не архивом</p>
+                    <h2>Один повреждённый файл обрывает весь архив</h2>
+                </div>
+                <div>
+                    <p>Когда вы скачиваете с Яндекс.Диска папку, он собирает архив на лету. Если по дороге попадается файл, который Яндекс не может отдать, соединение рвётся, и на руках остаётся битый архив.</p>
+                    <p>ya2go берёт файлы по одному. Такой файл откладывается в сторону, остальные переезжают дальше, а в конце каждый файл сверяется с оригиналом.</p>
+                </div>
             </div>
-            <div class="mobile-note" data-mobile-note>
-                <p>ya2go работает на компьютере. Откройте эту страницу на Mac или Windows, там будет кнопка скачивания.</p>
-                <button class="btn small" type="button" data-copy-link>Скопировать ссылку</button>
-            </div>
-        </div>
-        <div class="stage" role="img" aria-label="Окно ya2go на фоне неба: идёт перенос, 65 процентов">
-            <div class="window">
-                <div class="bar"><i></i><i></i><i></i><span>ya2go</span></div>
-                <picture>
-                    <source srcset="img/app-progress-dark.jpg" media="(prefers-color-scheme: dark)">
-                    <img src="img/app-progress-light.jpg" width="480" height="700" alt="">
-                </picture>
-            </div>
-        </div>
-    </div>
 
-    <section class="why" id="why">
+            <div class="versus">
+                <div class="bad">
+                    <p class="label">Архивом</p>
+                    <p>Один битый файл, и закачка оборвалась</p>
+                </div>
+                <div>
+                    <p class="label">ya2go</p>
+                    <p>Битый файл в списке, всё остальное в Google Drive</p>
+                </div>
+            </div>
+
+            <div class="windows" aria-label="Окна программы ya2go: идёт перенос и итог со списком повреждённых файлов" role="img">
+                <div class="window">
+                    <div class="bar"><i></i><i></i><i></i><span>ya2go</span></div>
+                    <picture>
+                        <source srcset="img/app-progress-dark.jpg" media="(prefers-color-scheme: dark)">
+                        <img src="img/app-progress-light.jpg" width="480" height="700" alt="" loading="lazy">
+                    </picture>
+                </div>
+                <div class="window">
+                    <div class="bar"><i></i><i></i><i></i><span>ya2go</span></div>
+                    <picture>
+                        <source srcset="img/app-done-dark.jpg" media="(prefers-color-scheme: dark)">
+                        <img src="img/app-done-light.jpg" width="480" height="700" alt="" loading="lazy">
+                    </picture>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="route" id="route">
         <div class="wrap">
-            <div>
-                <h2>Один повреждённый файл обрывает весь архив</h2>
-                <p class="muted">Когда вы скачиваете с Яндекс.Диска папку, он собирает архив на лету. Если по дороге попадается файл, который Яндекс не может отдать, соединение рвётся, и на руках остаётся битый архив. Скачать сотни гигабайт так почти невозможно.</p>
-                <p class="muted">ya2go берёт файлы по одному. Файл, который не отдаётся, откладывается в сторону, остальные переезжают дальше. В конце программа сверяет каждый файл с оригиналом и показывает, что не удалось.</p>
-                <ul class="versus">
-                    <li><b>Архивом</b><span class="bad">Один битый файл, и закачка оборвалась</span></li>
-                    <li><b>ya2go</b><span class="good">Битый файл в списке, всё остальное в Google Drive</span></li>
-                </ul>
-            </div>
-            <div class="window" role="img" aria-label="Итог переноса в ya2go: готово, 3 файла не удалось перенести">
-                <div class="bar"><i></i><i></i><i></i><span>ya2go</span></div>
-                <picture>
-                    <source srcset="img/app-done-dark.jpg" media="(prefers-color-scheme: dark)">
-                    <img src="img/app-done-light.jpg" width="480" height="700" alt="" loading="lazy">
-                </picture>
-            </div>
+            <p class="label">Как это работает</p>
+            <h2>Ваши файлы не проходят через нас</h2>
+            <p class="lead">Серверов у ya2go нет. Программа работает на вашем компьютере и передаёт файлы напрямую из Яндекса в Google.</p>
+            <ol class="path">
+                <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    <p class="label">Откуда</p>
+                    <h3>Яндекс.Диск</h3>
+                    <p>Только чтение. Удалить или изменить ваши файлы программа не может.</p>
+                </li>
+                <li class="me">
+                    <span class="dot" aria-hidden="true"></span>
+                    <p class="label">Через</p>
+                    <h3>Ваш компьютер</h3>
+                    <p>По одному файлу, со сверкой. Мы не видим ни файлов, ни паролей.</p>
+                </li>
+                <li>
+                    <span class="dot" aria-hidden="true"></span>
+                    <p class="label">Куда</p>
+                    <h3>Google Drive</h3>
+                    <p>Только свои файлы. Остальные ваши документы программе недоступны.</p>
+                </li>
+            </ol>
+            <p class="policy">Подробно в <a href="privacy.html">политике конфиденциальности</a>.</p>
         </div>
     </section>
 
     <section class="install" id="install">
         <div class="wrap">
             <div class="install-head">
-                <h2>Установка за пару минут</h2>
+                <div>
+                    <p class="label">Установка</p>
+                    <h2>Пара минут, и можно ехать</h2>
+                </div>
                 <div class="seg" role="group" aria-label="Инструкция для системы">
                     <button type="button" id="tab-mac" aria-controls="steps-mac" aria-pressed="true">Mac</button>
                     <button type="button" id="tab-win" aria-controls="steps-win" aria-pressed="false">Windows</button>
@@ -127,72 +184,59 @@
         </div>
     </section>
 
-    <section class="trust">
-        <div class="wrap">
-            <h2>Ваши файлы не проходят через нас</h2>
-            <p class="lead">ya2go работает на вашем компьютере и передаёт файлы напрямую из Яндекса в Google. Серверов у программы нет: мы не видим ни файлов, ни паролей.</p>
-            <dl>
-                <div>
-                    <dt>Яндекс.Диск: только чтение</dt>
-                    <dd>Программа может читать файлы, но не может их удалить или изменить. На Яндексе всё останется как было.</dd>
-                </div>
-                <div>
-                    <dt>Google Drive: только свои файлы</dt>
-                    <dd>Программа видит только то, что загрузила сама. Остальные ваши документы в Google ей недоступны.</dd>
-                </div>
-            </dl>
-            <p class="lead" style="margin-top:32px;font-size:16px">Подробно в <a href="privacy.html">политике конфиденциальности</a>.</p>
-        </div>
-    </section>
-
     <section class="faq" id="faq">
-        <div class="wrap">
-            <h2>Вопросы</h2>
-            <details>
-                <summary>Сколько это стоит?</summary>
-                <p>Сейчас бесплатно.</p>
-            </details>
-            <details>
-                <summary>Сколько займёт перенос?</summary>
-                <p>Зависит от интернета и объёма. Google принимает до 750 ГБ в сутки, поэтому большой архив переедет за несколько дней: программа сама продолжит на следующий день. Пока идёт перенос, не закрывайте программу и крышку ноутбука. Засыпать компьютер программа не даст.</p>
-            </details>
-            <details>
-                <summary>Хватит ли места в Google?</summary>
-                <p>Бесплатно в Google Drive 15 ГБ. Программа ещё до начала посчитает объём на Яндексе и скажет, хватает ли места. Если нет, место можно докупить в Google One.</p>
-            </details>
-            <details>
-                <summary>Сохранятся ли папки и даты?</summary>
-                <p>Да. Всё ляжет в Google Drive в папку «Из Яндекс.Диска» с теми же папками внутри, у фото сохранится дата. В Google Фото сами они не попадут: это отдельный сервис.</p>
-            </details>
-            <details>
-                <summary>Что делать с файлами, которые не перенеслись?</summary>
-                <p>Чаще всего это временный сбой Яндекса. Нажмите «Повторить» на следующий день: уже перенесённое заново не качается. Список можно сохранить в файл, чтобы проверить эти файлы на Яндексе вручную.</p>
-            </details>
-            <details>
-                <summary>Если интернет пропадёт или я выключу компьютер?</summary>
-                <p>Ничего не потеряется. При следующем запуске перенос продолжится с того же места.</p>
-            </details>
-            <details>
-                <summary>Почему Mac и Windows предупреждают о программе?</summary>
-                <p>Так они встречают любую программу, которая продаётся не через их магазины. Программа не меняет ничего на компьютере и не просит прав администратора. Предупреждение появляется только при первом запуске.</p>
-            </details>
+        <div class="wrap faq-grid">
+            <div>
+                <p class="label">Вопросы</p>
+                <h2>Что спрашивают перед переездом</h2>
+            </div>
+            <div class="faq-list">
+                <details>
+                    <summary>Сколько это стоит?</summary>
+                    <p>Сейчас бесплатно.</p>
+                </details>
+                <details>
+                    <summary>Сколько займёт перенос?</summary>
+                    <p>Зависит от интернета и объёма. Google принимает до 750 ГБ в сутки, поэтому большой архив переедет за несколько дней: программа сама продолжит на следующий день. Пока идёт перенос, не закрывайте программу и крышку ноутбука. Засыпать компьютер программа не даст.</p>
+                </details>
+                <details>
+                    <summary>Хватит ли места в Google?</summary>
+                    <p>Бесплатно в Google Drive 15 ГБ. Программа ещё до начала посчитает объём на Яндексе и скажет, хватает ли места. Если нет, место можно докупить в Google One.</p>
+                </details>
+                <details>
+                    <summary>Сохранятся ли папки и даты?</summary>
+                    <p>Да. Всё ляжет в Google Drive в папку «Из Яндекс.Диска» с теми же папками внутри, у фото сохранится дата. В Google Фото сами они не попадут: это отдельный сервис.</p>
+                </details>
+                <details>
+                    <summary>Что делать с файлами, которые не перенеслись?</summary>
+                    <p>Чаще всего это временный сбой Яндекса. Нажмите «Повторить» на следующий день: уже перенесённое заново не качается. Список можно сохранить в файл, чтобы проверить эти файлы на Яндексе вручную.</p>
+                </details>
+                <details>
+                    <summary>Если интернет пропадёт или я выключу компьютер?</summary>
+                    <p>Ничего не потеряется. При следующем запуске перенос продолжится с того же места.</p>
+                </details>
+                <details>
+                    <summary>Почему Mac и Windows предупреждают о программе?</summary>
+                    <p>Так они встречают любую программу, которая продаётся не через их магазины. Программа не меняет ничего на компьютере и не просит прав администратора. Предупреждение появляется только при первом запуске.</p>
+                </details>
+            </div>
         </div>
     </section>
 
-    <section class="final">
+    <section class="finale">
         <div class="wrap">
-            <h2>Перевезите архив, пока он цел</h2>
-            <a class="btn big" data-download href="https://ya2go.tech/download/ya2go-mac.zip">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
-                <span data-download-label>Скачать бесплатно</span>
-            </a>
+            <div class="finale-row">
+                <p>Годы фотографий не должны зависеть от одного дата-центра. Перевезите архив, пока он цел.</p>
+                <a class="btn solid-ink" data-download href="https://ya2go.tech/download/ya2go-mac.zip"><span data-download-label>Скачать бесплатно</span> <span class="arr" aria-hidden="true">→</span></a>
+            </div>
+            <p class="giant" aria-hidden="true">Заберите своё.</p>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="wrap">
-        <span>ya2go — облачный кочевник</span>
+        <span>ya2go · облачный кочевник</span>
         <span><a href="privacy.html">Политика конфиденциальности</a> · <a href="mailto:kurdga5as@gmail.com">kurdga5as@gmail.com</a></span>
     </div>
 </footer>
@@ -216,29 +260,24 @@
         b.addEventListener('click', function () { show(b.id === 'tab-win' ? 'win' : 'mac'); });
     });
 
+    var labels = document.querySelectorAll('[data-download-label]');
     if (mobile) {
-        document.querySelectorAll('.get').forEach(function (el) { el.hidden = true; });
+        document.querySelector('.get').hidden = true;
         document.querySelector('[data-mobile-note]').style.display = 'block';
         var copy = document.querySelector('[data-copy-link]');
         copy.addEventListener('click', function () {
-            var done = function () { copy.textContent = 'Ссылка скопирована'; };
-            if (navigator.clipboard) navigator.clipboard.writeText(location.origin + location.pathname).then(done, function () {});
+            if (navigator.clipboard) navigator.clipboard.writeText(location.origin + location.pathname).then(function () { copy.textContent = 'Ссылка скопирована'; }, function () {});
         });
-        document.querySelectorAll('.top [data-download]').forEach(function (el) { el.href = '#install'; el.textContent = 'Как установить'; });
-        // С телефона скачивать нечего: нижняя кнопка ведёт к установке.
-        document.querySelectorAll('.final [data-download]').forEach(function (el) { el.href = '#install'; });
-        document.querySelectorAll('.final [data-download-label]').forEach(function (el) { el.textContent = 'Как установить'; });
+        // С телефона скачивать нечего: кнопки ведут к установке.
+        document.querySelectorAll('[data-download]').forEach(function (el) { el.href = '#install'; });
+        document.querySelector('[data-download-top]').firstChild.textContent = 'Установка ';
+        labels.forEach(function (el) { el.textContent = 'Как установить'; });
         return;
     }
     if (!os) return;
     var file = os === 'win' ? 'ya2go-windows.exe' : 'ya2go-mac.zip';
-    var label = os === 'win' ? 'Скачать для Windows' : 'Скачать для Mac';
-    document.querySelectorAll('[data-download]').forEach(function (el) {
-        if (el.classList.contains('small')) return;
-        el.href = base + file;
-    });
-    document.querySelector('.top [data-download]').href = base + file;
-    document.querySelectorAll('[data-download-label]').forEach(function (el) { el.textContent = label; });
+    document.querySelectorAll('[data-download]').forEach(function (el) { el.href = base + file; });
+    labels.forEach(function (el) { el.textContent = os === 'win' ? 'Скачать для Windows' : 'Скачать для Mac'; });
     var alt = document.querySelector('[data-download-alt]');
     alt.textContent = os === 'win' ? 'Нужна версия для Mac?' : 'Нужна версия для Windows?';
     alt.href = base + (os === 'win' ? 'ya2go-mac.zip' : 'ya2go-windows.exe');

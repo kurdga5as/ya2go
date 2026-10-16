@@ -1,33 +1,32 @@
+/* ya2go.tech — лендинг v2 в духе planhat.com (см. docs/DESIGN.md, «Лендинг v2»).
+   Тонкий гротеск Onest, прямоугольные кнопки заглавными, бумага с сеткой линий,
+   один чёрный раздел, гигантская фраза внизу. */
+
 :root {
-    --bg: #f5f5f4;
-    --surface: #ffffff;
-    --text: #1c1c1a;
-    --text-2: #5f5e5a;
-    --border: rgba(0, 0, 0, 0.1);
+    --ink: #0b0b0b;
+    --paper: #f4f3ef;
+    --white: #ffffff;
+    --text: #0b0b0b;
+    --text-2: #55534e;
+    --line: rgba(11, 11, 11, 0.12);
     --accent: #1f6fd1;
-    --accent-hover: #185fa5;
-    --on-accent: #ffffff;
-    --sky: #cfe3ee;
-    --focus: 0 0 0 3px rgba(31, 111, 209, 0.35);
+    --focus: 0 0 0 3px rgba(31, 111, 209, 0.45);
     color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #1b1b1a;
-        --surface: #252524;
+        --paper: #121212;
+        --white: #1a1a1a;
         --text: #f1efe8;
-        --text-2: #b4b2a9;
-        --border: rgba(255, 255, 255, 0.12);
-        --accent: #5b9be6;
-        --accent-hover: #85b7eb;
-        --on-accent: #0b1a2c;
-        --sky: #233746;
-        --focus: 0 0 0 3px rgba(91, 155, 230, 0.45);
+        --text-2: #a9a69e;
+        --line: rgba(255, 255, 255, 0.12);
+        --accent: #6ea8ef;
     }
 }
 
 * {
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -42,232 +41,359 @@ html {
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
+    background: var(--paper);
     color: var(--text);
-    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    font: 400 17px/1.6 Onest, -apple-system, "Segoe UI", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
 a {
-    color: var(--accent);
-    text-underline-offset: 2px;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 .wrap {
-    max-width: 1080px;
+    width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
+    padding: 0 64px;
+}
+
+/* Подпись заглавными с разрядкой — главный «голос» planhat */
+.label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-2);
+}
+
+h1,
+h2 {
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+h2 {
+    font-size: clamp(34px, 4.4vw, 60px);
+    line-height: 1.06;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- кнопки: прямоугольные, заглавными ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    height: 52px;
     padding: 0 24px;
+    border: 1px solid currentColor;
+    font: 500 13px/1 Onest, system-ui, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
 
-/* ---------- шапка ---------- */
-
-.top {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: saturate(1.4) blur(12px);
-    -webkit-backdrop-filter: saturate(1.4) blur(12px);
-    border-bottom: 1px solid var(--border);
+.btn .arr {
+    font-size: 16px;
+    letter-spacing: 0;
+    transition: transform 0.2s;
 }
 
-.top .wrap {
+.btn:hover .arr {
+    transform: translateX(3px);
+}
+
+.btn.solid-light {
+    background: #fff;
+    border-color: #fff;
+    color: #0b0b0b;
+}
+
+.btn.solid-light:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.btn.line-light {
+    color: #fff;
+}
+
+.btn.line-light:hover {
+    background: #fff;
+    color: #0b0b0b;
+}
+
+.btn.solid-ink {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--paper);
+}
+
+.btn.solid-ink:hover {
+    background: transparent;
+    color: var(--text);
+}
+
+.btn.sm {
+    height: 42px;
+    padding: 0 18px;
+    font-size: 12px;
+}
+
+.btn:focus-visible,
+.seg button:focus-visible,
+summary:focus-visible,
+.nav a:focus-visible {
+    outline: none;
+    box-shadow: var(--focus);
+}
+
+/* ---------- первый экран: над облаками ---------- */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: #10161c url("https://images.pexels.com/photos/9663275/pexels-photo-9663275.jpeg?auto=compress&cs=tinysrgb&w=2400") center / cover no-repeat;
+}
+
+.hero::before {
+    /* слева темнее под текст, сверху темнее под меню: облака справа сверху светлые */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(8, 10, 12, 0.55) 0%, rgba(8, 10, 12, 0) 22%),
+        linear-gradient(90deg, rgba(8, 10, 12, 0.74) 0%, rgba(8, 10, 12, 0.38) 55%, rgba(8, 10, 12, 0.18) 100%);
+}
+
+.hero > * {
+    position: relative;
+}
+
+.nav {
     display: flex;
     align-items: center;
-    gap: 28px;
-    height: 64px;
+    gap: 40px;
+    height: 88px;
 }
 
 .brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--text);
+    font-size: 22px;
+    letter-spacing: -0.01em;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 19px;
 }
 
 .brand img {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
 }
 
-.top nav {
+.nav .links {
     display: flex;
-    gap: 24px;
+    gap: 36px;
     margin-left: auto;
-}
-
-.top nav a {
-    color: var(--text-2);
-    text-decoration: none;
     font-size: 15px;
+    font-weight: 300;
 }
 
-.top nav a:hover {
-    color: var(--text);
+.nav .links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.88);
 }
 
-/* ---------- кнопки ---------- */
+.nav .links a:hover {
+    color: #fff;
+}
 
-.btn {
-    display: inline-flex;
+.hero-body {
+    flex: 1;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 44px;
-    padding: 0 20px;
-    border-radius: 10px;
-    background: var(--accent);
-    color: var(--on-accent);
-    font-weight: 600;
-    font-size: 16px;
-    text-decoration: none;
-    transition: background 0.15s, transform 0.1s;
+    padding: 24px 0 56px;
 }
 
-.btn:hover {
-    background: var(--accent-hover);
-}
-
-.btn:active {
-    transform: scale(0.98);
-}
-
-.btn:focus-visible,
-.seg button:focus-visible,
-summary:focus-visible {
-    outline: none;
-    box-shadow: var(--focus);
-}
-
-.btn.big {
-    min-height: 56px;
-    padding: 0 28px;
-    font-size: 18px;
-    border-radius: 12px;
-}
-
-.btn.small {
-    min-height: 36px;
-    padding: 0 14px;
-    font-size: 15px;
-}
-
-.btn svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* ---------- первый экран ---------- */
-
-.hero {
-    position: relative;
-    padding: 56px 0 0;
-    text-align: center;
-    /* Небо за всем первым экраном: сверху чистое под текст, облака снизу вокруг окна */
-    background: var(--sky) url("https://images.pexels.com/photos/38475859/pexels-photo-38475859.jpeg?auto=compress&cs=tinysrgb&w=2400") center bottom / cover no-repeat;
-}
-
-@media (prefers-color-scheme: dark) {
-    .hero::before {
-        /* в тёмной теме небо приглушаем, иначе светлый текст на нём не читается */
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(16, 24, 32, 0.62);
-    }
-
-    .hero > * {
-        position: relative;
-    }
+.hero .label {
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 28px;
 }
 
 .hero h1 {
-    max-width: 900px;
-    margin: 0 auto;
-    font-size: clamp(34px, 5vw, 56px);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    font-weight: 700;
-    text-wrap: balance;
+    font-size: clamp(42px, 5.4vw, 80px);
+    line-height: 1.03;
+    max-width: 15ch;
 }
 
-.hero .lead {
-    max-width: 620px;
-    margin: 18px auto 28px;
+.hero .sub {
+    margin: 28px 0 44px;
+    max-width: 46ch;
     font-size: 19px;
-    color: var(--text);
-    opacity: 0.78;
-    text-wrap: pretty;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.get {
+.cta {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
-.get .alt {
-    font-size: 15px;
-    color: var(--text);
-}
-
-.get .note {
-    margin: 0;
+.alt-os {
+    margin-top: 18px;
     font-size: 14px;
-    color: var(--text);
-    opacity: 0.7;
-}
-
-.mobile-note p {
-    margin: 0 0 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .mobile-note {
     display: none;
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--surface);
-    font-size: 15px;
-    color: var(--text-2);
+    max-width: 30rem;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-weight: 300;
 }
 
-/* Небо с окном программы */
-.stage {
-    position: relative;
-    margin-top: 40px;
-    height: clamp(420px, 52vw, 600px);
+.mobile-note p {
+    margin-bottom: 14px;
+}
+
+.hero-foot {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.hero-foot .wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    height: 64px;
+    align-items: center;
+}
+
+.hero-foot .label {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* ---------- бумага с сеткой ---------- */
+
+.grid-bg {
+    /* тонкие вертикальные линии колонок, как у planhat */
+    background-image: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px calc(100% / 6));
+    background-size: min(1280px, 100%) 100%;
+    background-position: center;
+    background-repeat: repeat-y;
+}
+
+section {
+    border-top: 1px solid var(--line);
+}
+
+.why {
+    padding: 120px 0 0;
     overflow: hidden;
 }
 
-.stage::after {
-    /* у края страницы небо тает в фон, чтобы следующий раздел не начинался со шва */
-    content: "";
-    position: absolute;
-    inset: auto 0 0 0;
-    height: 120px;
-    background: linear-gradient(to bottom, transparent, var(--bg));
+.why-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 64px;
+    align-items: end;
+}
+
+.why-head .label {
+    margin-bottom: 24px;
+}
+
+.why-head p {
+    color: var(--text-2);
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.why-head p + p {
+    margin-top: 14px;
+}
+
+.versus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 72px;
+    border-block: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.versus > div {
+    padding: 28px 32px 32px 0;
+}
+
+.versus > div + div {
+    padding-left: 32px;
+    border-left: 1px solid var(--line);
+}
+
+.versus .label {
+    margin-bottom: 12px;
+}
+
+.versus p {
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+}
+
+.versus .bad p {
+    color: var(--text-2);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(163, 45, 45, 0.6);
+}
+
+/* окна программы на бумаге */
+.windows {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 80px 0 0;
+    height: 620px;
 }
 
 .window {
-    position: absolute;
-    left: 50%;
-    top: 48px;
-    transform: translateX(-50%);
-    width: min(420px, 82vw);
-    border-radius: 12px;
+    width: 380px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 40px 80px rgba(11, 11, 11, 0.12);
     overflow: hidden;
-    background: var(--bg);
-    box-shadow: 0 30px 70px rgba(10, 40, 70, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    z-index: 1;
+    border-radius: 10px 10px 0 0;
+}
+
+.window + .window {
+    margin-top: 72px;
 }
 
 .window .bar {
@@ -276,8 +402,7 @@ summary:focus-visible {
     gap: 7px;
     height: 30px;
     padding: 0 12px;
-    background: color-mix(in srgb, var(--surface) 70%, var(--bg));
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
     font-size: 12px;
     color: var(--text-2);
 }
@@ -302,94 +427,103 @@ summary:focus-visible {
     padding-right: 40px;
 }
 
-.window img {
-    display: block;
-    width: 100%;
-    height: auto;
+/* ---------- чёрный раздел: путь файла ---------- */
+
+.route {
+    background: #0b0b0b;
+    color: #fff;
+    text-align: center;
+    padding: 140px 0;
+    border-top: 0;
 }
 
-/* ---------- разделы ---------- */
-
-section {
-    padding: 96px 0;
+.route .label {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
 }
 
-h2 {
-    margin: 0 0 16px;
-    font-size: clamp(28px, 3.6vw, 40px);
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    font-weight: 700;
-    text-wrap: balance;
+.route h2 {
+    max-width: 18ch;
+    margin: 0 auto;
 }
 
-p {
-    margin: 0 0 14px;
+.route .lead {
+    max-width: 44ch;
+    margin: 24px auto 0;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.75);
 }
 
-.muted {
-    color: var(--text-2);
-}
-
-/* Почему не архивом: текст и окно итога рядом */
-.why .wrap {
+.path {
+    position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 64px;
-    align-items: center;
-}
-
-.why .window {
-    position: static;
-    transform: none;
-    width: 100%;
-    max-width: 400px;
-    justify-self: center;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16), 0 0 0 1px var(--border);
-}
-
-.versus {
-    margin: 28px 0 0;
-    padding: 0;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 960px;
+    margin: 88px auto 0;
     list-style: none;
-    border-top: 1px solid var(--border);
+    padding: 0;
 }
 
-.versus li {
-    display: grid;
-    grid-template-columns: 120px minmax(0, 1fr);
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 16px;
+.path::before {
+    /* линия, по которой идёт файл */
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.35);
 }
 
-.versus b {
-    font-weight: 600;
+.path li {
+    position: relative;
+    padding: 0 12px;
 }
 
-.versus .bad {
-    color: #a32d2d;
+.path .dot {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background: #0b0b0b;
 }
 
-.versus .good {
-    color: #2f7d32;
+.path li.me .dot {
+    background: #fff;
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-    .versus .bad {
-        color: #f09595;
-    }
-
-    .versus .good {
-        color: #8bc48e;
-    }
+.path .label {
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 8px;
 }
 
-/* Установка */
+.path h3 {
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.path p {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 24ch;
+    margin: 0 auto;
+}
+
+.route .policy {
+    margin-top: 72px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- установка ---------- */
+
 .install {
-    background: var(--surface);
-    border-block: 1px solid var(--border);
+    padding: 120px 0;
 }
 
 .install-head {
@@ -397,94 +531,89 @@ p {
     flex-wrap: wrap;
     align-items: end;
     justify-content: space-between;
-    gap: 16px 32px;
-    margin-bottom: 40px;
+    gap: 24px 40px;
+    margin-bottom: 56px;
 }
 
-.install-head h2 {
-    margin: 0;
+.install-head .label {
+    margin-bottom: 20px;
 }
 
 .seg {
     display: inline-flex;
-    padding: 4px;
-    border-radius: 12px;
-    background: var(--bg);
-    border: 1px solid var(--border);
+    border: 1px solid var(--text);
 }
 
 .seg button {
-    font: inherit;
-    font-size: 15px;
-    min-height: 40px;
-    padding: 0 18px;
+    font: 500 12px/1 Onest, system-ui, sans-serif;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    height: 44px;
+    padding: 0 22px;
     border: 0;
-    border-radius: 9px;
-    background: none;
-    color: var(--text-2);
+    background: transparent;
+    color: var(--text);
     cursor: pointer;
 }
 
 .seg button[aria-pressed="true"] {
-    background: var(--surface);
-    color: var(--text);
-    font-weight: 600;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    background: var(--text);
+    color: var(--paper);
 }
 
 .steps {
-    margin: 0;
-    padding: 0;
     list-style: none;
+    padding: 0;
     counter-reset: step;
-    max-width: 760px;
+    border-top: 1px solid var(--line);
 }
 
 .steps li {
     counter-increment: step;
     display: grid;
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 8px;
-    padding: 24px 0;
-    border-top: 1px solid var(--border);
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 16px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
 }
 
 .steps li::before {
-    content: counter(step);
-    font-size: 40px;
-    line-height: 1;
-    font-weight: 700;
-    color: var(--accent);
-    font-variant-numeric: tabular-nums;
+    content: "0" counter(step);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--text-2);
+    padding-top: 4px;
 }
 
 .steps h3 {
-    margin: 4px 0 6px;
-    font-size: 19px;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
 }
 
 .steps p {
-    margin: 0;
+    max-width: 62ch;
     color: var(--text-2);
+    font-weight: 300;
 }
 
-/* Скриншот с обведённой кнопкой внутри шага установки */
+.steps a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+}
+
+/* скриншот с обведённой кнопкой */
 .shot {
-    margin: 18px 0 0;
+    margin-top: 24px;
     max-width: 440px;
 }
 
 .shot-frame {
     position: relative;
-    border-radius: 12px;
+    border: 1px solid var(--line);
     overflow: hidden;
-    border: 1px solid var(--border);
-}
-
-.shot img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .shot .ring {
@@ -495,7 +624,7 @@ p {
 }
 
 .shot figcaption {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 14px;
     color: var(--text-2);
 }
@@ -504,68 +633,47 @@ p {
     display: none !important;
 }
 
-/* Доверие: единственный цветной раздел */
-.trust {
-    background: #1f6fd1;
-    color: #ffffff;
+/* ---------- вопросы таблицей ---------- */
+
+.faq {
+    padding: 120px 0;
+    background: var(--white);
 }
 
-.trust h2 {
-    max-width: 760px;
-    font-size: clamp(30px, 4.4vw, 48px);
-}
-
-.trust .lead {
-    max-width: 640px;
-    font-size: 19px;
-    color: rgba(255, 255, 255, 0.86);
-}
-
-.trust dl {
+.faq-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px;
-    margin: 48px 0 0;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.28);
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 64px;
 }
 
-.trust dt {
-    font-weight: 600;
-    font-size: 19px;
-    margin-bottom: 6px;
+.faq .label {
+    margin-bottom: 20px;
 }
 
-.trust dd {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.86);
+.faq h2 {
+    font-size: clamp(30px, 3vw, 44px);
+    max-width: 12ch;
 }
 
-.trust a {
-    color: #ffffff;
-}
-
-/* Вопросы */
-.faq details {
-    max-width: 820px;
+.faq-list {
+    border-top: 1px solid var(--line);
 }
 
 details {
-    border-top: 1px solid var(--border);
-}
-
-details:last-of-type {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
 }
 
 summary {
     list-style: none;
     cursor: pointer;
-    padding: 20px 40px 20px 0;
-    position: relative;
-    font-weight: 600;
-    font-size: 18px;
-    border-radius: 6px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 0;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
 }
 
 summary::-webkit-details-marker {
@@ -573,118 +681,218 @@ summary::-webkit-details-marker {
 }
 
 summary::after {
-    content: "";
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--text-2);
-    border-bottom: 2px solid var(--text-2);
-    transform: translateY(-70%) rotate(45deg);
+    content: "+";
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--text-2);
     transition: transform 0.2s;
 }
 
 details[open] summary::after {
-    transform: translateY(-30%) rotate(-135deg);
+    transform: rotate(45deg);
 }
 
 details p {
-    margin: 0 0 20px;
+    padding: 0 48px 26px 0;
     color: var(--text-2);
-    max-width: 680px;
+    font-weight: 300;
 }
 
-/* Подвал */
-.final {
-    text-align: center;
-    padding: 80px 0 96px;
+/* ---------- финал: гигантская фраза ---------- */
+
+.finale {
+    padding: 120px 0 0;
+    overflow: hidden;
 }
 
-.final h2 {
-    margin-bottom: 24px;
+.finale-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 56px;
+}
+
+.finale-row p {
+    max-width: 36ch;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text-2);
+}
+
+.giant {
+    font-weight: 300;
+    font-size: clamp(56px, 11.6vw, 168px);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+    white-space: nowrap;
+    padding-bottom: 32px;
 }
 
 footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 0 40px;
-    font-size: 14px;
-    color: var(--text-2);
+    border-top: 1px solid var(--line);
 }
 
 footer .wrap {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 24px;
     justify-content: space-between;
-}
-
-footer a {
+    gap: 12px 32px;
+    padding-block: 28px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text-2);
 }
 
-/* ---------- телефон и планшет ---------- */
+footer a {
+    text-decoration: none;
+}
 
-@media (max-width: 860px) {
-    .why .wrap {
-        grid-template-columns: 1fr;
-        gap: 40px;
+footer a:hover {
+    color: var(--text);
+}
+
+/* ---------- планшет и телефон ---------- */
+
+@media (max-width: 1024px) {
+    .wrap {
+        padding: 0 40px;
     }
 
-    .trust dl {
+    .why-head,
+    .faq-grid {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 32px;
+    }
+
+    .window {
+        width: 340px;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
     body {
         font-size: 16px;
     }
 
     .wrap {
-        padding: 0 16px;
+        padding: 0 20px;
     }
 
-    .top nav {
+    .nav .links {
         display: none;
     }
 
-    .top .btn {
+    /* на узком экране текст на всю ширину кадра: затемняем ровно, а не слева */
+    .hero::before {
+        background: linear-gradient(180deg, rgba(8, 10, 12, 0.6) 0%, rgba(8, 10, 12, 0.66) 100%);
+    }
+
+    .nav .btn {
         margin-left: auto;
     }
 
-    .hero {
-        padding-top: 48px;
-    }
-
-    .hero .lead {
+    .hero .sub {
         font-size: 17px;
     }
 
-    section {
-        padding: 64px 0;
+    .hero-foot .wrap {
+        height: auto;
+        padding-block: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
     }
 
-    .stage {
-        margin-top: 32px;
+    .why,
+    .install,
+    .faq {
+        padding: 80px 0;
+    }
+
+    .why {
+        padding-bottom: 0;
+    }
+
+    .versus {
+        grid-template-columns: 1fr;
+    }
+
+    .versus > div {
+        padding: 22px 0;
+    }
+
+    .versus > div + div {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .windows {
         height: 520px;
+        padding-top: 56px;
     }
 
     .window {
-        top: 32px;
+        width: 300px;
     }
 
-    .versus li {
+    .window + .window {
+        display: none;
+    }
+
+    .route {
+        padding: 96px 0;
+    }
+
+    .path {
         grid-template-columns: 1fr;
-        gap: 2px;
+        gap: 40px;
+        text-align: left;
+    }
+
+    .path::before {
+        top: 7px;
+        bottom: 7px;
+        left: 7px;
+        right: auto;
+        width: 1px;
+        height: auto;
+    }
+
+    .path li {
+        padding: 0 0 0 40px;
+    }
+
+    .path .dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+    }
+
+    .path p {
+        margin: 0;
     }
 
     .steps li {
-        grid-template-columns: 44px minmax(0, 1fr);
+        grid-template-columns: 1fr;
+        gap: 8px;
     }
 
-    .steps li::before {
-        font-size: 30px;
+    .steps h3 {
+        font-size: 21px;
+    }
+
+    summary {
+        font-size: 18px;
+    }
+
+    .giant {
+        white-space: normal;
+        font-size: 18vw;
     }
 }
