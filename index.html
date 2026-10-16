@@ -7,7 +7,9 @@
     <meta name="description" content="Программа для Mac и Windows: переносит всё с Яндекс.Диска в Google Drive по одному файлу. Повреждённые файлы не останавливают перенос, в конце вы увидите их списком. Бесплатно.">
     <meta property="og:title" content="ya2go — заберите фото с Яндекс.Диска">
     <meta property="og:description" content="По одному файлу в Google Drive. Битые файлы не останавливают перенос.">
-    <meta property="og:image" content="img/app-progress-light.jpg">
+    <meta property="og:image" content="https://ya2go.tech/img/app-progress-light.jpg">
+    <meta property="og:url" content="https://ya2go.tech/">
+    <link rel="canonical" href="https://ya2go.tech/">
     <link rel="icon" href="logo.png">
     <link rel="stylesheet" href="landing.css">
 </head>
@@ -31,7 +33,7 @@
             <h1>Заберите фото с Яндекс.Диска, пока они там есть</h1>
             <p class="lead">ya2go перевозит всё в Google Drive по одному файлу. Если Яндекс не отдаёт какой-то файл, перенос не обрывается: вы увидите такие файлы списком в конце.</p>
             <div class="get">
-                <a class="btn big" data-download href="https://github.com/kurdga5as/ya2go/releases/latest/download/ya2go-mac.zip">
+                <a class="btn big" data-download href="https://ya2go.tech/download/ya2go-mac.zip">
                     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
                     <span data-download-label>Скачать бесплатно</span>
                 </a>
@@ -88,7 +90,7 @@
             <ol class="steps" id="steps-mac" aria-label="Установка на Mac">
                 <li><div>
                     <h3>Скачайте и перетащите в «Программы»</h3>
-                    <p><a href="https://github.com/kurdga5as/ya2go/releases/latest/download/ya2go-mac.zip">Скачайте ya2go для Mac</a>, откройте архив двойным щелчком и перетащите ya2go в папку «Программы».</p>
+                    <p><a href="https://ya2go.tech/download/ya2go-mac.zip">Скачайте ya2go для Mac</a>, откройте архив двойным щелчком и перетащите ya2go в папку «Программы».</p>
                 </div></li>
                 <li><div>
                     <h3>Разрешите первый запуск</h3>
@@ -103,7 +105,7 @@
             <ol class="steps" id="steps-win" aria-label="Установка на Windows" hidden>
                 <li><div>
                     <h3>Скачайте и запустите</h3>
-                    <p><a href="https://github.com/kurdga5as/ya2go/releases/latest/download/ya2go-windows.exe">Скачайте ya2go для Windows</a> и откройте файл. Устанавливать ничего не нужно.</p>
+                    <p><a href="https://ya2go.tech/download/ya2go-windows.exe">Скачайте ya2go для Windows</a> и откройте файл. Устанавливать ничего не нужно.</p>
                 </div></li>
                 <li><div>
                     <h3>Разрешите первый запуск</h3>
@@ -172,7 +174,7 @@
     <section class="final">
         <div class="wrap">
             <h2>Перевезите архив, пока он цел</h2>
-            <a class="btn big" data-download href="https://github.com/kurdga5as/ya2go/releases/latest/download/ya2go-mac.zip">
+            <a class="btn big" data-download href="https://ya2go.tech/download/ya2go-mac.zip">
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 16.5h12"/></svg>
                 <span data-download-label>Скачать бесплатно</span>
             </a>
@@ -190,7 +192,7 @@
 <script>
 // Кнопка «Скачать» сама подставляет файл под систему посетителя.
 (function () {
-    var base = 'https://github.com/kurdga5as/ya2go/releases/latest/download/';
+    var base = 'https://ya2go.tech/download/';
     var ua = navigator.userAgent;
     var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
     var mobile = /Android|iPhone|iPad|iPod/i.test(ua) || (navigator.userAgentData && navigator.userAgentData.mobile);
