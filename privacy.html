@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Переезд — политика конфиденциальности</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <header>
+        <a href="./"><img src="logo.png" alt="Переезд, на главную"></a>
+        <h1>Политика конфиденциальности</h1>
+    </header>
+    <p class="muted">Действует с 16 октября 2026 года. <a href="#en">English version below</a>.</p>
+
+    <p>Переезд — программа для macOS и Windows, которая копирует файлы с Яндекс.Диска пользователя в его Google Drive. Здесь описано, какие данные она использует и что с ними происходит.</p>
+
+    <h2>Где работает программа</h2>
+    <p>Программа работает только на компьютере пользователя. У Переезда нет своих серверов: файлы передаются напрямую с серверов Яндекса на серверы Google через интернет-соединение пользователя. Разработчик не получает файлы, пароли, ключи доступа или сведения о том, что и как переносится.</p>
+
+    <h2>Какие доступы запрашиваются</h2>
+    <ul>
+        <li><strong>Яндекс.Диск:</strong> чтение файлов и сведения о диске (<code>cloud_api:disk.read</code>, <code>cloud_api:disk.info</code>). Нужно, чтобы получить список файлов, их размер и содержимое. Изменять и удалять файлы на Яндекс.Диске программа не может.</li>
+        <li><strong>Google Drive:</strong> доступ только к файлам, которые создала сама программа (<code>https://www.googleapis.com/auth/drive.file</code>). Нужно, чтобы загрузить файлы, проверить, какие уже перенесены, и сверить копии с оригиналами. Другие файлы в Google Drive программе не видны.</li>
+    </ul>
+
+    <h2>Что хранится и где</h2>
+    <p>Ключи доступа (токены), которые выдают Яндекс и Google после входа, хранятся только на компьютере пользователя, в папке программы: на macOS <code>~/Library/Application Support/ya2gd</code>, на Windows <code>%AppData%\ya2gd</code>. Там же хранится время, когда продолжить перенос после суточного лимита Google. Список непереносимых файлов сохраняется в файл, только если пользователь сам нажмёт «Сохранить список».</p>
+    <p>Программа не собирает статистику, не отправляет отчёты об ошибках, не показывает рекламу и никому не передаёт данные.</p>
+
+    <h2>Как отозвать доступ и удалить данные</h2>
+    <ul>
+        <li>Кнопка «Выйти» в программе удаляет ключ доступа с компьютера.</li>
+        <li>Удаление папки программы удаляет все её данные.</li>
+        <li>Отозвать доступ на стороне сервисов можно в <a href="https://myaccount.google.com/permissions">настройках аккаунта Google</a> и в <a href="https://id.yandex.ru/security">Яндекс ID</a>.</li>
+    </ul>
+    <p>Перенесённые файлы остаются в Google Drive пользователя и удаляются обычным способом.</p>
+
+    <h2>Данные Google</h2>
+    <p>Использование и передача информации, полученной через API Google, соответствуют <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, включая требования Limited Use. Данные Google используются только для копирования файлов пользователя, которое он запустил сам, не передаются третьим лицам, не используются для рекламы и не читаются людьми.</p>
+
+    <h2>Изменения и контакты</h2>
+    <p>Если политика изменится, новая версия появится на этой странице с новой датой. Вопросы о данных: <a href="mailto:kurdga5as@gmail.com">kurdga5as@gmail.com</a>.</p>
+
+    <hr>
+
+    <section id="en" lang="en">
+        <h2>Privacy policy (English)</h2>
+        <p class="muted">Effective October 16, 2026.</p>
+
+        <p>Pereezd is a desktop application for macOS and Windows that copies files from the user's Yandex Disk to the user's Google Drive.</p>
+
+        <h3>Where it runs</h3>
+        <p>The application runs only on the user's computer. Pereezd has no servers of its own: files are transferred directly from Yandex servers to Google servers over the user's internet connection. The developer never receives the user's files, passwords, access tokens, or any information about what is being transferred.</p>
+
+        <h3>Requested access</h3>
+        <ul>
+            <li><strong>Yandex Disk:</strong> read files and disk information (<code>cloud_api:disk.read</code>, <code>cloud_api:disk.info</code>), to list files and download their contents. The application cannot modify or delete files on Yandex Disk.</li>
+            <li><strong>Google Drive:</strong> access only to files created by the application (<code>https://www.googleapis.com/auth/drive.file</code>), to upload files, see which ones were already copied, and verify copies against the originals. Other files in the user's Google Drive are not visible to the application.</li>
+        </ul>
+
+        <h3>What is stored</h3>
+        <p>OAuth tokens issued by Yandex and Google are stored only on the user's computer, in the application folder (<code>~/Library/Application Support/ya2gd</code> on macOS, <code>%AppData%\ya2gd</code> on Windows), together with the time to resume a transfer after Google's daily upload limit. The application collects no analytics, sends no crash reports, shows no ads, and shares no data with anyone.</p>
+
+        <h3>Revoking access and deleting data</h3>
+        <p>The "Выйти" (Sign out) button removes the token from the computer; deleting the application folder removes all of its data. Access can also be revoked in the <a href="https://myaccount.google.com/permissions">Google Account permissions</a> and in <a href="https://id.yandex.ru/security">Yandex ID</a>. Copied files remain in the user's Google Drive.</p>
+
+        <h3>Google user data</h3>
+        <p>Pereezd's use and transfer of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. Google user data is used only to perform the file copy that the user starts, is not transferred to third parties, is not used for advertising, and is not read by humans.</p>
+
+        <h3>Changes and contact</h3>
+        <p>Any changes will be published on this page with a new effective date. Questions: <a href="mailto:kurdga5as@gmail.com">kurdga5as@gmail.com</a>.</p>
+    </section>
+
+    <footer>
+        <p><a href="./">Переезд</a> · <a href="mailto:kurdga5as@gmail.com">kurdga5as@gmail.com</a></p>
+    </footer>
+</main>
+</body>
+</html>

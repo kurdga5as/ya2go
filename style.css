@@ -1,0 +1,143 @@
+:root {
+    --bg: #f5f5f4;
+    --surface: #ffffff;
+    --text: #1c1c1a;
+    --text-2: #5f5e5a;
+    --border: rgba(0, 0, 0, 0.1);
+    --accent: #1f6fd1;
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1b1b1a;
+        --surface: #252524;
+        --text: #f1efe8;
+        --text-2: #b4b2a9;
+        --border: rgba(255, 255, 255, 0.12);
+        --accent: #5b9be6;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 16px 64px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+header img {
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+}
+
+header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h2 {
+    margin: 36px 0 8px;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+h3 {
+    margin: 24px 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+p, li {
+    color: var(--text-2);
+}
+
+strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+ul, ol {
+    padding-left: 22px;
+}
+
+li + li {
+    margin-top: 4px;
+}
+
+a {
+    color: var(--accent);
+    text-underline-offset: 2px;
+}
+
+.lead {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.card {
+    margin: 24px 0;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.card p {
+    margin: 0;
+}
+
+.muted {
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+hr {
+    margin: 48px 0 32px;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+footer {
+    margin-top: 48px;
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+code {
+    font: 14px ui-monospace, "SF Mono", Menlo, monospace;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 23px;
+    }
+}
