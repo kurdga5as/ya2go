@@ -699,6 +699,57 @@ details p {
     font-weight: 300;
 }
 
+/* ---------- поблагодарить ---------- */
+
+.thanks {
+    padding: 120px 0;
+}
+
+.thanks-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 64px;
+    align-items: center;
+}
+
+.thanks .label {
+    margin-bottom: 20px;
+}
+
+.thanks-text {
+    max-width: 44ch;
+    margin: 20px 0 36px;
+    font-size: 19px;
+    font-weight: 300;
+    color: var(--text-2);
+}
+
+.thanks-note {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--text-2);
+}
+
+.thanks-qr {
+    width: 260px;
+    padding: 16px 16px 14px;
+    background: #ffffff;
+    border: 1px solid var(--line);
+}
+
+.thanks-qr figcaption {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #55534e;
+    text-align: center;
+}
+
+.faq details a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+}
+
 /* ---------- финал: гигантская фраза ---------- */
 
 .finale {
@@ -894,6 +945,19 @@ footer a:hover {
     .giant {
         white-space: normal;
         font-size: 18vw;
+    }
+
+    .thanks {
+        padding: 80px 0;
+    }
+
+    .thanks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* на телефоне QR сканировать нечем: остаётся кнопка */
+    .thanks-qr {
+        display: none;
     }
 }
 
