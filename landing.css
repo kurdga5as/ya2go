@@ -896,3 +896,179 @@ footer a:hover {
         font-size: 18vw;
     }
 }
+
+/* ---------- политика конфиденциальности ---------- */
+
+.doc-head {
+    background: #0b0b0b;
+    color: #fff;
+}
+
+.doc-head .nav .links a {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.doc-title {
+    padding: 72px 0 64px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.doc-title .label {
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+}
+
+.doc-title h1 {
+    font-size: clamp(40px, 5vw, 72px);
+    line-height: 1.04;
+}
+
+.doc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 32px;
+    margin-top: 28px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.doc-meta a {
+    color: #fff;
+}
+
+.doc {
+    padding: 0 0 120px;
+}
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.32fr) minmax(0, 0.68fr);
+    gap: 64px;
+}
+
+.toc {
+    position: sticky;
+    top: 32px;
+    align-self: start;
+    padding-top: 72px;
+}
+
+.toc .label {
+    margin-bottom: 16px;
+}
+
+.toc ol {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--line);
+}
+
+.toc li {
+    border-bottom: 1px solid var(--line);
+}
+
+.toc a {
+    display: block;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: none;
+    color: var(--text-2);
+}
+
+.toc a:hover {
+    color: var(--text);
+}
+
+.doc-body {
+    padding-top: 72px;
+    max-width: 68ch;
+}
+
+.doc-body .intro {
+    font-size: clamp(20px, 2vw, 24px);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+    margin-bottom: 56px;
+}
+
+.doc-body section {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 24px;
+}
+
+.doc-body h2 {
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1.15;
+    margin-bottom: 16px;
+}
+
+.doc-body p,
+.doc-body li {
+    font-weight: 300;
+    color: var(--text-2);
+}
+
+.doc-body p + p {
+    margin-top: 12px;
+}
+
+.doc-body ul {
+    padding-left: 20px;
+}
+
+.doc-body li + li {
+    margin-top: 10px;
+}
+
+.doc-body strong {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.doc-body a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+}
+
+.doc-body code {
+    font: 14px ui-monospace, "SF Mono", Menlo, monospace;
+    overflow-wrap: anywhere;
+    color: var(--text);
+}
+
+.doc-body .lang {
+    margin-top: 72px;
+    padding-top: 56px;
+    border-top: 1px solid var(--text);
+}
+
+.doc-body .lang > .label {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+    .doc-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .toc {
+        position: static;
+        padding-top: 48px;
+    }
+
+    .doc-body {
+        padding-top: 48px;
+    }
+}
+
+@media (max-width: 720px) {
+    .doc-title {
+        padding: 48px 0 44px;
+    }
+}
