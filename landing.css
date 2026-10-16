@@ -468,6 +468,38 @@ p {
     color: var(--text-2);
 }
 
+/* Скриншот с обведённой кнопкой внутри шага установки */
+.shot {
+    margin: 18px 0 0;
+    max-width: 440px;
+}
+
+.shot-frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.shot .ring {
+    position: absolute;
+    border: 3px solid #ff453a;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px rgba(255, 69, 58, 0.25);
+}
+
+.shot figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--text-2);
+}
+
 [hidden] {
     display: none !important;
 }
