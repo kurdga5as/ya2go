@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ya2go по ссылке — скачать с Яндекс.Диска прямо в браузере</title>
+    <meta name="description" content="Без установки и без входа в аккаунт: вставьте публичную ссылку на папку Яндекс.Диска, выберите папку на компьютере, и браузер скачает всё по одному файлу с проверкой.">
+    <link rel="canonical" href="https://ya2go.tech/link.html">
+    <link rel="icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap">
+    <link rel="stylesheet" href="landing.css?v=20261016224832">
+</head>
+<body>
+
+<header class="doc-head">
+    <div class="wrap">
+        <nav class="nav" aria-label="Разделы">
+            <a class="brand" href="./"><img src="logo.png" alt="">ya2go</a>
+            <div class="links">
+                <a href="./#why">Почему не архивом</a>
+                <a href="#how-link">Как сделать ссылку</a>
+                <a href="./#install">Программа</a>
+            </div>
+            <a class="btn solid-light sm" href="./">На главную <span class="arr" aria-hidden="true">→</span></a>
+        </nav>
+    </div>
+    <div class="doc-title">
+        <div class="wrap">
+            <p class="label">Без установки · без входа в аккаунт</p>
+            <h1>Скачать по ссылке прямо в браузере</h1>
+            <div class="doc-meta">
+                <span>Файлы идут из Яндекса прямо в вашу папку</span>
+                <span>Сайт их не видит</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="tool">
+    <div class="wrap">
+        <p class="tool-unsupported" data-unsupported hidden>Этот браузер не умеет сохранять файлы в выбранную папку. Откройте страницу в Chrome, Яндекс.Браузере или Edge на компьютере, или <a href="./#install">скачайте программу ya2go</a>.</p>
+
+        <ol class="tool-steps">
+            <li class="tool-step" data-step="link">
+                <span class="tool-num">01</span>
+                <div class="tool-main">
+                    <h2>Ссылка на папку</h2>
+                    <p class="tool-hint">Публичная ссылка с Яндекс.Диска, вида disk.yandex.ru/d/… <a href="#how-link">Как её сделать</a></p>
+                    <form class="tool-row" data-link-form>
+                        <label class="sr-only" for="link">Публичная ссылка</label>
+                        <input id="link" name="link" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://disk.yandex.ru/d/…" required>
+                        <button class="btn solid-ink" type="submit">Проверить <span class="arr" aria-hidden="true">→</span></button>
+                    </form>
+                    <p class="tool-status" data-link-status aria-live="polite"></p>
+                </div>
+            </li>
+
+            <li class="tool-step" data-step="folder">
+                <span class="tool-num">02</span>
+                <div class="tool-main">
+                    <h2>Папка на компьютере</h2>
+                    <p class="tool-hint">Например, на внешнем диске. Внутри появится папка «Из Яндекс.Диска». Браузер спросит разрешение сохранять в неё файлы.</p>
+                    <div class="tool-row">
+                        <button class="btn solid-ink" type="button" data-pick disabled>Выбрать папку <span class="arr" aria-hidden="true">→</span></button>
+                    </div>
+                    <p class="tool-status" data-folder-status aria-live="polite"></p>
+                </div>
+            </li>
+
+            <li class="tool-step" data-step="run">
+                <span class="tool-num">03</span>
+                <div class="tool-main">
+                    <h2>Перенос</h2>
+                    <p class="tool-hint">Не закрывайте вкладку и крышку ноутбука, пока идёт перенос. Если что-то прервётся, запустите снова с той же папкой: скачанное повторно качаться не будет.</p>
+                    <div class="tool-row">
+                        <button class="btn solid-ink" type="button" data-start disabled>Начать <span class="arr" aria-hidden="true">→</span></button>
+                        <button class="btn line-ink" type="button" data-stop hidden>Остановить</button>
+                    </div>
+                    <div class="tool-progress" data-progress hidden>
+                        <div class="tool-pct"><span data-pct>0</span>%</div>
+                        <div class="tool-bar" role="progressbar" aria-label="Перенос" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div data-bar></div></div>
+                        <p class="tool-status" data-run-status></p>
+                        <p class="tool-status muted" data-run-current></p>
+                    </div>
+                    <div class="tool-report" data-report hidden></div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <section class="how" id="how-link">
+        <div class="wrap how-grid">
+            <div>
+                <p class="label">Как сделать ссылку</p>
+                <h2>Четыре клика на Яндекс.Диске</h2>
+            </div>
+            <ol class="steps how-steps">
+                <li><div>
+                    <h3>Откройте disk.yandex.ru</h3>
+                    <p>Войдите в свой аккаунт и найдите папку, которую хотите забрать. Можно выбрать весь архив, например папку «Фото».</p>
+                </div></li>
+                <li><div>
+                    <h3>Нажмите «Поделиться»</h3>
+                    <p>Правой кнопкой по папке → «Поделиться» → «Скопировать ссылку». Вставьте её в поле выше.</p>
+                </div></li>
+                <li><div>
+                    <h3>После переноса закройте ссылку</h3>
+                    <p>Пока ссылка открыта, по ней может скачать любой, у кого она есть. Когда всё скачается, снова «Поделиться» и выключите доступ по ссылке.</p>
+                </div></li>
+            </ol>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="wrap">
+        <span><a href="./">ya2go · облачный кочевник</a></span>
+        <span><a href="privacy.html">Политика конфиденциальности</a> · <a href="mailto:kurdga5as@gmail.com">kurdga5as@gmail.com</a></span>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/3.0.2/spark-md5.min.js"></script>
+<script src="link.js?v=20261016224832"></script>
+</body>
+</html>
